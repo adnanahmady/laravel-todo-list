@@ -20,4 +20,10 @@ Route::group(['prefix' => 'tasks'], function() {
         'uses'  => 'TasksController@index',
         'as'    => 'tasks'
     ]);
+    Route::get('{id}', [
+        'uses' => 'TasksController@show',
+        'as' => 'tasks.show',
+    ])
+        ->where(['id' => '\d+'])
+;
 });
