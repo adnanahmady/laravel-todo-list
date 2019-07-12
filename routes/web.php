@@ -31,3 +31,8 @@ Route::get('{username}/tasks', [
     'uses' => 'UsersTasksController@index',
     'as' => 'user.tasks'
 ]);
+
+Route::get('{username}/tasks/{id}', [
+    'uses' => 'UsersTasksController@show',
+    'as' => 'user.tasks.show'
+]);
