@@ -18,11 +18,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <ul class="list-group">
+                            <div class="list-group">
                                 @foreach($tasks as $task)
-                                    <li class="list-group-item-dark list-group-item list-group-item-action">
+                                    <div class="btn-group">
                                         <a href="{{ route('user.tasks', $task->user->username) }}"
-                                           class="d-inline-block text-decoration-none">
+                                           class="btn btn-info">
                                             <img
                                                 src="{{ gravatar_url($task->user->email) }}"
                                                 alt="{{ $task->user->email }}"
@@ -31,13 +31,13 @@
                                         </a>
                                         <a
                                             href="{{ userTaskLink($task) }}"
-                                            class="d-inline-block text-decoration-none text-dark"
+                                            class="btn list-group-item-info list-group-item list-group-item-action"
                                         >
                                             {{ $task->title }}
                                         </a>
-                                    </li>
+                                    </div>
                                 @endforeach
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
