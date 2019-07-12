@@ -27,3 +27,7 @@ Route::group(['prefix' => 'tasks'], function() {
         ->where(['id' => '\d+'])
 ;
 });
+Route::get('{username}/tasks', [
+    'uses' => 'UsersTasksController@index',
+    'as' => 'user.tasks'
+]);
