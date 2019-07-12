@@ -64,4 +64,14 @@ class User extends Authenticatable
     public function setPasswordAttribute($password) {
         $this->attributes['password'] = Hash::make($password);
     }
+
+    /**
+     * find user by username
+     *
+     * @param String $username
+     * @return mixed
+     */
+    public static function byUsername(String $username) {
+        return static::whereUsername($username)->first();
+    }
 }
