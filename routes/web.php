@@ -11,15 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses'  => 'TasksController@index',
+    'as'    => 'tasks'
+]);
 
 Route::group(['prefix' => 'tasks'], function() {
-    Route::get('/', [
-        'uses'  => 'TasksController@index',
-        'as'    => 'tasks'
-    ]);
     Route::get('{id}', [
         'uses' => 'TasksController@show',
         'as' => 'tasks.show',
