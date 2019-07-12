@@ -9,6 +9,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * User Model
@@ -53,5 +54,14 @@ class User extends Authenticatable
      */
     public function tasks() {
         return $this->hasMany(Task::class);
+    }
+
+    /**
+     * hash password using model it self
+     *
+     * @param $password
+     */
+    public function setPasswordAttribute($password) {
+        $this->attributes['password'] = Hash::make($password);
     }
 }
