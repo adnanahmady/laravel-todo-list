@@ -39,4 +39,14 @@ class Task extends Model
 
         return $task;
     }
+
+    /**
+     * find tasks by their username
+     *
+     * @param $username
+     * @return mixed
+     */
+    public static function byUsername($username) {
+        return User::byUsername($username)->tasks;
+    }
 }
