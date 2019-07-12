@@ -23,14 +23,14 @@ class UsersTasksController extends Controller {
      * @return \Illuminate\Contracts\View\View
      */
     public function index($username) {
-        $tasks = User::byUsername($username)->tasks;
+        $tasks = Task::byUsername($username);
 
         return View::make('tasks.index', compact('tasks'));
     }
 
     /**
      * show task route method
-     * 
+     *
      * @param $username
      * @param $id
      * @return \Illuminate\Contracts\View\View
