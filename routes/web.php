@@ -17,6 +17,10 @@ Route::get('/', [
 ]);
 
 Route::group(['prefix' => 'tasks'], function() {
+    Route::post('/', [
+        'uses' => 'TasksController@store',
+    ]);
+
     Route::get('{id}', [
         'uses' => 'TasksController@show',
         'as' => 'tasks.show',
