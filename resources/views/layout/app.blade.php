@@ -27,6 +27,11 @@
                         @yield('content')
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        @yield('extras')
+                    </div>
+                </div>
             </main>
         </div>
         <div class="col-4">
