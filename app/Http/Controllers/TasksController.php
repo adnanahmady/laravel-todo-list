@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
-use Illuminate\Http\Request;
+use App\User;
 use Custom\Exceptions\ValidatorException;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
@@ -21,8 +21,9 @@ class TasksController extends Controller
 
     public function index() {
         $tasks = Task::with('user')->get();
+        $users = User::pluck('username', 'id');
 
-        return View::make('tasks.index', compact('tasks'));
+        return View::make('tasks.index', compact('tasks', 'users'));
     }
 
     public function show($id) {
