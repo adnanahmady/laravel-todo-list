@@ -45,3 +45,15 @@
         </div>
     </div>
 @stop
+
+@section('extras')
+    <div class="row">
+        <div class="col">
+            <hr class="my-5">
+            <div class="h2">
+                Add new Task
+            </div>
+            @include('tasks.partials._form')
+        </div>
+    </div>
+@stop
