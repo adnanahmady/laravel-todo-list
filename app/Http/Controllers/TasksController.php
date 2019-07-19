@@ -4,21 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\User;
-use Custom\Exceptions\ValidatorException;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
-use Custom\Services\TaskCreatorService;
-use Custom\Validators\TaskValidator;
 
 class TasksController extends Controller
 {
-    protected $taskCreator;
-
-    public function __construct()
-    {
-        $this->taskCreator = new TaskCreatorService(new TaskValidator());
-    }
-
     public function index() {
         $tasks = Task::with('user')->get();
         $users = User::pluck('username', 'id');
@@ -33,10 +23,13 @@ class TasksController extends Controller
     }
 
     public function store() {
-        try {
-            $this->taskCreator->make(Input::all());
-        } catch (ValidatorException $exception) {
-            return redirect()->back()->withInput()->withErrors($exception->getErrors());
+        $input = Input::all();
+        $input['user_id'] = $input['assign'];
+        unset($input['assign']);
+        $task = new Task($input);
+
+        if (! $task->save()) {
+            return redirect()->back()->withInput()->withErrors($task->getErrors());
         }
 
         return redirect()->route('tasks');

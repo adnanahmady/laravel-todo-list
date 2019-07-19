@@ -12,9 +12,14 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
  *
  * @package App
  */
-class Task extends Model
+class Task extends BaseModel
 {
     protected $guarded = ['id'];
+
+    protected static $rules = [
+        'title' => 'required',
+        'body' => 'required',
+    ];
 
     /**
      * set user one to many relationship
