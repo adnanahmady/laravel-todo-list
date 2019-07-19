@@ -27,6 +27,9 @@ Route::group(['prefix' => 'tasks'], function() {
     ])
         ->where(['id' => '\d+'])
 ;
+    Route::patch('update/{id}', [
+        'uses' => 'TasksController@update'
+    ]);
 });
 Route::get('{username}/tasks', [
     'uses' => 'UsersTasksController@index',

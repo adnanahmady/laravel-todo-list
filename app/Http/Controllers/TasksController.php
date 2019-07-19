@@ -34,4 +34,13 @@ class TasksController extends Controller
 
         return redirect()->route('tasks');
     }
+
+    public function update($id) {
+        $input = Input::get('completed');
+        $task = Task::where('id', $id)->update(['completed' => empty($input) ? false : true]);
+
+        if ($task) {
+            return redirect()->back();
+        }
+    }
 }

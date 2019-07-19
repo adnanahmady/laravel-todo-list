@@ -4,6 +4,13 @@
 
 @section('header', 'Tasks')
 
+@section('head')
+    <meta
+        name="csrf-token"
+        content="{{ csrf_token() }}"
+    >
+@stop
+
 @section('content')
     <div class="row">
         <div class="col">
@@ -35,6 +42,7 @@
                                         >
                                             {{ $task->title }}
                                         </a>
+                                        @include('tasks.partials._completed_model')
                                     </div>
                                 @endforeach
                             </div>
@@ -56,4 +64,12 @@
             @include('tasks.partials._form')
         </div>
     </div>
+@stop
+
+@section('scripts')
+<script>
+    $('.completed').on('click', function () {
+        this.parentNode.submit();
+    });
+</script>
 @stop
