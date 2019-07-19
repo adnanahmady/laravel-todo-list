@@ -14153,3 +14153,17 @@ a.text-dark:focus {
   }
 }
 
+.completed {
+  display: none;
+}
+
+.check-completed {
+  vertical-align: -webkit-baseline-middle;
+}
+
+.completed-label {
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
